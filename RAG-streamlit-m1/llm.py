@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 from openai import OpenAI
+import httpx2
 # from env import OPENAI_API_KEY
 
 load_dotenv()
@@ -9,7 +10,8 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 class LLMservice:
     def __init__(self):
-        self.client = OpenAI(api_key=OPENAI_API_KEY)
+        http_client = httpx2.Client(headers={"Accept-Encoding": "identity"})
+        self.client = OpenAI(api_key=OPENAI_API_KEY, http_client=http_client)
         self.model = "gpt-4o-mini"
         self.SYSTEM_PROMPT = """You are an Intelligent Assistant that answers questions based on the provided context.
         

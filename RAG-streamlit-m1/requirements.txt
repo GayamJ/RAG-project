@@ -4,6 +4,8 @@ uvicorn
 langchain_text_splitters
 chromadb
 openai
+httpx2
 sentence_transformers
 pypdf2
+zstandard>=0.25.0
 
